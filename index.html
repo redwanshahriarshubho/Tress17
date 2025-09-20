@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Trees17 – Explore Amazing Trees</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Font Awesome for Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    .tree-card {
+      transition: all 0.3s ease-in-out;
+    }
+    .tree-card:hover {
+      transform: translateY(-10px) scale(1.02);
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    .animate-fadeInUp {
+      animation: fadeInUp 0.8s ease-out forwards;
+    }
+    .delay-1 { animation-delay: 0.1s; }
+    .delay-2 { animation-delay: 0.2s; }
+    .delay-3 { animation-delay: 0.3s; }
+    .delay-4 { animation-delay: 0.4s; }
+    .delay-5 { animation-delay: 0.5s; }
+    .delay-6 { animation-delay: 0.6s; }
+  </style>
+</head>
+<body class="bg-gradient-to-br from-green-50 to-emerald-100 min-h-screen">
+
+  <!-- Hero Section -->
+  <header class="text-center py-16 px-6 bg-gradient-to-r from-green-600 to-emerald-700 text-white">
+    <h1 class="text-5xl font-extrabold mb-4 animate-pulse">🌳Tress17</h1>
+    <p class="text-xl max-w-3xl mx-auto leading-relaxed">
+      Discover the most majestic, ancient, and unique trees from around the globe. 
+      Each tree has a story — let’s explore together.
+    </p>
+  </header>
+
+  <!-- Main Content: Tree Cards -->
+  <main class="max-w-7xl mx-auto py-16 px-6">
+    <h2 class="text-3xl font-bold text-center text-gray-800 mb-12">🌲 Featured Trees</h2>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
+      
+      <!-- Tree Card 1 -->
+      <div class="tree-card bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl animate-fadeInUp delay-1">
+        <img src="https://images.unsplash.com/photo-1507524745313-549db9de0a6c?auto=format&fit=crop&w=600" alt="General Sherman" class="w-full h-52 object-cover" />
+        <div class="p-6">
+          <h3 class="text-2xl font-bold text-gray-800 mb-2">General Sherman</h3>
+          <p class="text-gray-600 mb-4">📍 Sequoia National Park, USA</p>
+          <p class="text-gray-700 mb-4">The largest tree by volume on Earth. Over 2,000 years old!</p>
+          <button class="bg-green-600 hover:bg-green-700 text-white font-semibold py-2 px-4 rounded-lg transition-colors">
+            Learn More →
+          </button>
+        </div>
+      </div>
+
+      <!-- Tree Card 2 -->
+      <div class="tree-card bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl animate-fadeInUp delay-2">
+        <img src="https://images.unsplash.com/photo-1583142738603-bf6b86e389ea?auto=format&fit=crop&w=600" alt="Baobab Tree" class="w-full h-52 object-cover" />
+        <div class="p-6">
+          <h3 class="text-2xl font-bold text-gray-800 mb-2">African Baobab</h3>
+          <p class="text-gray-600 mb-4">📍 Madagascar & Africa</p>
+          <p class="text-gray-700 mb-4">Stores thousands of liters of water. Called “Tree of Life”.</p>
+          <button class="bg-green-600 hover:bg-green-700 text-white font-semibold py-2 px-4 rounded-lg transition-colors">
+            Learn More →
+          </button>
+        </div>
+      </div>
+
+      <!-- Tree Card 3 -->
+      <div class="tree-card bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl animate-fadeInUp delay-3">
+        <img src="https://images.unsplash.com/photo-1542259009403-36e7d9da011b?auto=format&fit=crop&w=600" alt="Wollemi Pine" class="w-full h-52 object-cover" />
+        <div class="p-6">
+          <h3 class="text-2xl font-bold text-gray-800 mb-2">Wollemi Pine</h3>
+          <p class="text-gray-600 mb-4">📍 Australia</p>
+          <p class="text-gray-700 mb-4">Once thought extinct. Rediscovered in 1994. A living fossil.</p>
+          <button class="bg-green-600 hover:bg-green-700 text-white font-semibold py-2 px-4 rounded-lg transition-colors">
+            Learn More →
+          </button>
+        </div>
+      </div>
+
+      <!-- Tree Card 4 -->
+      <div class="tree-card bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl animate-fadeInUp delay-4">
+        <img src="https://images.unsplash.com/photo-1583142638653-0b29a54564d9?auto=format&fit=crop&w=600" alt="Dragon Blood Tree" class="w-full h-52 object-cover" />
+        <div class="p-6">
+          <h3 class="text-2xl font-bold text-gray-800 mb-2">Dragon Blood Tree</h3>
+          <p class="text-gray-600 mb-4">📍 Socotra, Yemen</p>
+          <p class="text-gray-700 mb-4">Looks alien! Resin is red like blood — used in medicine & dyes.</p>
+          <button class="bg-green-600 hover:bg-green-700 text-white font-semibold py-2 px-4 rounded-lg transition-colors">
+            Learn More →
+          </button>
+        </div>
+      </div>
+
+      <!-- Tree Card 5 -->
+      <div class="tree-card bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl animate-fadeInUp delay-5">
+        <img src="https://images.unsplash.com/photo-1598734853403-8fa8a048fc89?auto=format&fit=crop&w=600" alt="Banyan Tree" class="w-full h-52 object-cover" />
+        <div class="p-6">
+          <h3 class="text-2xl font-bold text-gray-800 mb-2">The Great Banyan</h3>
+          <p class="text-gray-600 mb-4">📍 Kolkata, India</p>
+          <p class="text-gray-700 mb-4">Covers 4+ acres! Looks like a forest but it’s one single tree.</p>
+          <button class="bg-green-600 hover:bg-green-700 text-white font-semibold py-2 px-4 rounded-lg transition-colors">
+            Learn More →
+          </button>
+        </div>
+      </div>
+
+      <!-- Tree Card 6 -->
+      <div class="tree-card bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl animate-fadeInUp delay-6">
+        <img src="https://images.unsplash.com/photo-1583142729023-2d0e58b5c3cd?auto=format&fit=crop&w=600" alt="Methuselah" class="w-full h-52 object-cover" />
+        <div class="p-6">
+          <h3 class="text-2xl font-bold text-gray-800 mb-2">Methuselah</h3>
+          <p class="text-gray-600 mb-4">📍 California, USA</p>
+          <p class="text-gray-700 mb-4">Over 4,800 years old! One of Earth’s oldest living organisms.</p>
+          <button class="bg-green-600 hover:bg-green-700 text-white font-semibold py-2 px-4 rounded-lg transition-colors">
+            Learn More →
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- CTA Section -->
+  <section class="py-16 bg-green-700 text-white text-center">
+    <h2 class="text-3xl font-bold mb-4">Want to Plant a Tree?</h2>
+    <p class="mb-8 max-w-2xl mx-auto">Join our global movement. Every tree counts. 🌍💚</p>
+    <a href="#" class="inline-block bg-white text-green-700 font-bold py-3 px-8 rounded-full hover:bg-gray-100 transition-colors">
+      Start Planting Today
+    </a>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-800 text-white py-10">
+    <div class="max-w-6xl mx-auto px-6 text-center">
+      <h3 class="text-2xl font-bold mb-4">🌳 Trees17</h3>
+      <p class="mb-6">Celebrating nature’s giants, one tree at a time.</p>
+      <div class="flex justify-center space-x-6 text-2xl">
+        <a href="#" class="hover:text-green-400 transition-colors"><i class="fab fa-facebook"></i></a>
+        <a href="#" class="hover:text-green-400 transition-colors"><i class="fab fa-twitter"></i></a>
+        <a href="#" class="hover:text-green-400 transition-colors"><i class="fab fa-instagram"></i></a>
+        <a href="#" class="hover:text-green-400 transition-colors"><i class="fab fa-youtube"></i></a>
+      </div>
+      <p class="mt-8 text-gray-400">© 2025 Trees17. All rights reserved.</p>
+    </div>
+  </footer>
+
+</body>
+</html>
