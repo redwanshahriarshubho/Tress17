@@ -4,17 +4,21 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Trees17 – Explore Amazing Trees</title>
+
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
+  
   <!-- Font Awesome for Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
   <style>
     .tree-card {
       transition: all 0.3s ease-in-out;
     }
     .tree-card:hover {
       transform: translateY(-10px) scale(1.02);
-      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.15), 
+                  0 10px 10px -5px rgba(0, 0, 0, 0.05);
     }
 
     @keyframes fadeInUp {
@@ -38,11 +42,11 @@
     .delay-6 { animation-delay: 0.6s; }
   </style>
 </head>
-<body class="bg-gradient-to-br from-green-50 to-emerald-100 min-h-screen">
+<body class="bg-gradient-to-br from-green-50 to-emerald-100 min-h-screen font-sans">
 
   <!-- Hero Section -->
   <header class="text-center py-16 px-6 bg-gradient-to-r from-green-600 to-emerald-700 text-white">
-    <h1 class="text-5xl font-extrabold mb-4 animate-pulse">🌳Tress17</h1>
+    <h1 class="text-5xl font-extrabold mb-4 animate-pulse">🌳 Trees17</h1>
     <p class="text-xl max-w-3xl mx-auto leading-relaxed">
       Discover the most majestic, ancient, and unique trees from around the globe. 
       Each tree has a story — let’s explore together.
@@ -56,12 +60,12 @@
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
       
       <!-- Tree Card 1 -->
-      <div class="tree-card bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl animate-fadeInUp delay-1">
+      <div class="tree-card bg-white rounded-xl overflow-hidden shadow-lg animate-fadeInUp delay-1">
         <img src="img/jackfruit1.jpg" alt="Jackfruit" class="w-full h-52 object-cover" />
         <div class="p-6">
-          <h3 class="text-2xl font-bold text-gray-800 mb-2">Jack fruit</h3>
+          <h3 class="text-2xl font-bold text-gray-800 mb-2">Jackfruit</h3>
           <p class="text-gray-600 mb-4">📍 Bangladesh</p>
-          <p class="text-gray-700 mb-4">Bangldeshi fruits</p>
+          <p class="text-gray-700 mb-4">The national fruit of Bangladesh.</p>
           <button class="bg-green-600 hover:bg-green-700 text-white font-semibold py-2 px-4 rounded-lg transition-colors">
             Learn More →
           </button>
@@ -69,12 +73,12 @@
       </div>
 
       <!-- Tree Card 2 -->
-      <div class="tree-card bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl animate-fadeInUp delay-2">
-        <img src="img/lychee tree.jpg" alt="Lychee" class="w-full h-52 object-cover" />
+      <div class="tree-card bg-white rounded-xl overflow-hidden shadow-lg animate-fadeInUp delay-2">
+        <img src="img/lychee-tree.jpg" alt="Lychee" class="w-full h-52 object-cover" />
         <div class="p-6">
           <h3 class="text-2xl font-bold text-gray-800 mb-2">Lychee</h3>
-          <p class="text-gray-600 mb-4">📍 Bangldesh</p>
-          <p class="text-gray-700 mb-4"Bangladeshi fruit.</p>
+          <p class="text-gray-600 mb-4">📍 Bangladesh</p>
+          <p class="text-gray-700 mb-4">A sweet tropical fruit enjoyed worldwide.</p>
           <button class="bg-green-600 hover:bg-green-700 text-white font-semibold py-2 px-4 rounded-lg transition-colors">
             Learn More →
           </button>
@@ -82,12 +86,12 @@
       </div>
 
       <!-- Tree Card 3 -->
-      <div class="tree-card bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl animate-fadeInUp delay-3">
-        <img src="img/guvava tree.jpg" alt="Guava" class="w-full h-52 object-cover" />
+      <div class="tree-card bg-white rounded-xl overflow-hidden shadow-lg animate-fadeInUp delay-3">
+        <img src="img/guava-tree.jpg" alt="Guava" class="w-full h-52 object-cover" />
         <div class="p-6">
           <h3 class="text-2xl font-bold text-gray-800 mb-2">Guava</h3>
           <p class="text-gray-600 mb-4">📍 Bangladesh</p>
-          <p class="text-gray-700 mb-4">bangldeshi fruits.</p>
+          <p class="text-gray-700 mb-4">Rich in vitamin C and fiber.</p>
           <button class="bg-green-600 hover:bg-green-700 text-white font-semibold py-2 px-4 rounded-lg transition-colors">
             Learn More →
           </button>
@@ -95,12 +99,12 @@
       </div>
 
       <!-- Tree Card 4 -->
-      <div class="tree-card bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl animate-fadeInUp delay-4">
-        <img src="img/mango tree.jpg" alt="Mango" class="w-full h-52 object-cover" />
+      <div class="tree-card bg-white rounded-xl overflow-hidden shadow-lg animate-fadeInUp delay-4">
+        <img src="img/mango-tree.jpg" alt="Mango" class="w-full h-52 object-cover" />
         <div class="p-6">
           <h3 class="text-2xl font-bold text-gray-800 mb-2">Mango</h3>
-          <p class="text-gray-600 mb-4">📍Bangladeshi mango</p>
-          <p class="text-gray-700 mb-4">Bangladeshi mango/p>
+          <p class="text-gray-600 mb-4">📍 Bangladesh</p>
+          <p class="text-gray-700 mb-4">Known as the “King of Fruits.”</p>
           <button class="bg-green-600 hover:bg-green-700 text-white font-semibold py-2 px-4 rounded-lg transition-colors">
             Learn More →
           </button>
@@ -108,12 +112,12 @@
       </div>
 
       <!-- Tree Card 5 -->
-      <div class="tree-card bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl animate-fadeInUp delay-5">
-        <img src="img/banana tree.jpg" alt="Banyan Tree" class="w-full h-52 object-cover" />
+      <div class="tree-card bg-white rounded-xl overflow-hidden shadow-lg animate-fadeInUp delay-5">
+        <img src="img/banana-tree.jpg" alt="Banana" class="w-full h-52 object-cover" />
         <div class="p-6">
           <h3 class="text-2xl font-bold text-gray-800 mb-2">Banana</h3>
-          <p class="text-gray-600 mb-4">📍Bangladeshi banana</p>
-          <p class="text-gray-700 mb-4"> bangladeshi fruigts.</p>
+          <p class="text-gray-600 mb-4">📍 Bangladesh</p>
+          <p class="text-gray-700 mb-4">A popular fruit available year-round.</p>
           <button class="bg-green-600 hover:bg-green-700 text-white font-semibold py-2 px-4 rounded-lg transition-colors">
             Learn More →
           </button>
@@ -121,12 +125,12 @@
       </div>
 
       <!-- Tree Card 6 -->
-      <div class="tree-card bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl animate-fadeInUp delay-6">
+      <div class="tree-card bg-white rounded-xl overflow-hidden shadow-lg animate-fadeInUp delay-6">
         <img src="img/rose.jpg" alt="Rose" class="w-full h-52 object-cover" />
         <div class="p-6">
           <h3 class="text-2xl font-bold text-gray-800 mb-2">Rose</h3>
           <p class="text-gray-600 mb-4">📍 California, USA</p>
-          <p class="text-gray-700 mb-4">Rose.</p>
+          <p class="text-gray-700 mb-4">Symbol of love and beauty.</p>
           <button class="bg-green-600 hover:bg-green-700 text-white font-semibold py-2 px-4 rounded-lg transition-colors">
             Learn More →
           </button>
@@ -146,10 +150,10 @@
   </section>
 
   <!-- Footer -->
-  <footer class="bg-gray-800 text-white py-10">
+  <footer class="bg-gray-900 text-white py-10">
     <div class="max-w-6xl mx-auto px-6 text-center">
       <h3 class="text-2xl font-bold mb-4">🌳 Trees17</h3>
-      <p class="mb-6">Celebrating nature’s giants, one tree at a time.</p>
+      <p class="mb-6 text-gray-300">Celebrating nature’s giants, one tree at a time.</p>
       <div class="flex justify-center space-x-6 text-2xl">
         <a href="#" class="hover:text-green-400 transition-colors"><i class="fab fa-facebook"></i></a>
         <a href="#" class="hover:text-green-400 transition-colors"><i class="fab fa-twitter"></i></a>
