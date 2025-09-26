@@ -217,6 +217,61 @@
       background: linear-gradient(135deg, var(--primary-green), var(--light-green));
       color: white;
     }
+    
+    /* Marketplace Styles */
+    .marketplace-card {
+      transition: all 0.3s ease;
+    }
+    
+    .marketplace-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    }
+    
+    .price-tag {
+      background: linear-gradient(135deg, var(--accent-yellow), #f9c74f);
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      padding: 5px 15px;
+      border-radius: 20px;
+      font-weight: 600;
+      color: var(--primary-green);
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    
+    .seller-info {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .seller-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+    
+    .badge {
+      position: absolute;
+      top: 15px;
+      left: 15px;
+      padding: 5px 10px;
+      border-radius: 5px;
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+    
+    .badge-new {
+      background-color: #4caf50;
+      color: white;
+    }
+    
+    .badge-popular {
+      background-color: #ff9800;
+      color: white;
+    }
   </style>
 </head>
 <body class="bg-gradient-to-br from-green-50 to-emerald-100 min-h-screen">
@@ -231,6 +286,7 @@
       <div class="hidden md:flex space-x-8">
         <a href="#home" class="text-green-800 hover:text-green-600 font-medium transition-colors">Home</a>
         <a href="#trees" class="text-green-800 hover:text-green-600 font-medium transition-colors">Trees</a>
+        <a href="#marketplace" class="text-green-800 hover:text-green-600 font-medium transition-colors">Marketplace</a>
         <a href="#about" class="text-green-800 hover:text-green-600 font-medium transition-colors">About</a>
         <a href="#plant" class="text-green-800 hover:text-green-600 font-medium transition-colors">Plant a Tree</a>
       </div>
@@ -257,8 +313,8 @@
         <a href="#trees" class="btn-primary text-white font-semibold py-3 px-8 rounded-full text-lg shadow-xl">
           <i class="fas fa-leaf mr-2"></i>Explore Trees
         </a>
-        <a href="#plant" class="bg-transparent border-2 border-white text-white font-semibold py-3 px-8 rounded-full text-lg hover:bg-white hover:text-green-800 transition-all duration-300">
-          <i class="fas fa-seedling mr-2"></i>Plant a Tree
+        <a href="#marketplace" class="bg-transparent border-2 border-white text-white font-semibold py-3 px-8 rounded-full text-lg hover:bg-white hover:text-green-800 transition-all duration-300">
+          <i class="fas fa-shopping-cart mr-2"></i>Buy/Sell Trees
         </a>
       </div>
     </div>
@@ -395,6 +451,175 @@
     </div>
   </main>
 
+  <!-- Marketplace Section -->
+  <section id="marketplace" class="section-padding bg-white">
+    <div class="max-w-7xl mx-auto px-6">
+      <h2 class="text-4xl md:text-5xl font-bold text-center text-gray-800 mb-4">🌱 Tree Marketplace</h2>
+      <p class="text-center text-gray-600 max-w-2xl mx-auto mb-16">Buy and sell trees from our community of tree enthusiasts</p>
+
+      <div class="flex justify-center mb-10">
+        <button onclick="openSellModal()" class="btn-primary text-white font-semibold py-3 px-8 rounded-full text-lg shadow-xl">
+          <i class="fas fa-plus mr-2"></i>Sell a Tree
+        </button>
+      </div>
+
+      <div id="marketplaceGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Marketplace Card 1 -->
+        <div class="marketplace-card bg-white rounded-xl overflow-hidden shadow-lg relative">
+          <div class="badge badge-new">NEW</div>
+          <div class="price-tag">$45</div>
+          <img src="img/jackfruit1.jpg" alt="Jackfruit Sapling" class="w-full h-48 object-cover">
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-gray-800 mb-2">Jackfruit Sapling</h3>
+            <p class="text-gray-600 mb-4">Healthy 2-year-old jackfruit sapling ready for planting.</p>
+            <div class="seller-info mb-4">
+              <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Seller" class="seller-avatar">
+              <div>
+                <p class="font-medium text-gray-800">Rahim Khan</p>
+                <p class="text-sm text-gray-600">Dhaka, Bangladesh</p>
+              </div>
+            </div>
+            <div class="flex justify-between">
+              <button onclick="openBuyModal('jackfruit-sapling')" class="bg-green-600 hover:bg-green-700 text-white font-medium py-2 px-4 rounded-lg transition-colors">
+                <i class="fas fa-shopping-cart mr-2"></i>Buy Now
+              </button>
+              <button onclick="openViewModal('jackfruit-sapling')" class="border border-green-600 text-green-600 hover:bg-green-50 font-medium py-2 px-4 rounded-lg transition-colors">
+                <i class="fas fa-eye mr-2"></i>View Details
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Marketplace Card 2 -->
+        <div class="marketplace-card bg-white rounded-xl overflow-hidden shadow-lg relative">
+          <div class="badge badge-popular">POPULAR</div>
+          <div class="price-tag">$32</div>
+          <img src="img/mango tree.jpg" alt="Mango Tree" class="w-full h-48 object-cover">
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-gray-800 mb-2">Mango Tree</h3>
+            <p class="text-gray-600 mb-4">Premium variety mango tree, 3 years old. Will bear fruit next season.</p>
+            <div class="seller-info mb-4">
+              <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Seller" class="seller-avatar">
+              <div>
+                <p class="font-medium text-gray-800">Fatima Ahmed</p>
+                <p class="text-sm text-gray-600">Rajshahi, Bangladesh</p>
+              </div>
+            </div>
+            <div class="flex justify-between">
+              <button onclick="openBuyModal('mango-tree')" class="bg-green-600 hover:bg-green-700 text-white font-medium py-2 px-4 rounded-lg transition-colors">
+                <i class="fas fa-shopping-cart mr-2"></i>Buy Now
+              </button>
+              <button onclick="openViewModal('mango-tree')" class="border border-green-600 text-green-600 hover:bg-green-50 font-medium py-2 px-4 rounded-lg transition-colors">
+                <i class="fas fa-eye mr-2"></i>View Details
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Marketplace Card 3 -->
+        <div class="marketplace-card bg-white rounded-xl overflow-hidden shadow-lg relative">
+          <div class="price-tag">$28</div>
+          <img src="img/lychee tree.jpg" alt="Lychee Tree" class="w-full h-48 object-cover">
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-gray-800 mb-2">Lychee Tree</h3>
+            <p class="text-gray-600 mb-4">Healthy lychee sapling, 2 years old. Sweet variety with high yield potential.</p>
+            <div class="seller-info mb-4">
+              <img src="https://randomuser.me/api/portraits/men/67.jpg" alt="Seller" class="seller-avatar">
+              <div>
+                <p class="font-medium text-gray-800">Karim Uddin</p>
+                <p class="text-sm text-gray-600">Sylhet, Bangladesh</p>
+              </div>
+            </div>
+            <div class="flex justify-between">
+              <button onclick="openBuyModal('lychee-tree')" class="bg-green-600 hover:bg-green-700 text-white font-medium py-2 px-4 rounded-lg transition-colors">
+                <i class="fas fa-shopping-cart mr-2"></i>Buy Now
+              </button>
+              <button onclick="openViewModal('lychee-tree')" class="border border-green-600 text-green-600 hover:bg-green-50 font-medium py-2 px-4 rounded-lg transition-colors">
+                <i class="fas fa-eye mr-2"></i>View Details
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Marketplace Card 4 -->
+        <div class="marketplace-card bg-white rounded-xl overflow-hidden shadow-lg relative">
+          <div class="price-tag">$22</div>
+          <img src="img/guvava tree.jpg" alt="Guava Tree" class="w-full h-48 object-cover">
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-gray-800 mb-2">Guava Tree</h3>
+            <p class="text-gray-600 mb-4">Organically grown guava tree, 2.5 years old. High vitamin C variety.</p>
+            <div class="seller-info mb-4">
+              <img src="https://randomuser.me/api/portraits/women/28.jpg" alt="Seller" class="seller-avatar">
+              <div>
+                <p class="font-medium text-gray-800">Ayesha Siddiqua</p>
+                <p class="text-sm text-gray-600">Khulna, Bangladesh</p>
+              </div>
+            </div>
+            <div class="flex justify-between">
+              <button onclick="openBuyModal('guava-tree')" class="bg-green-600 hover:bg-green-700 text-white font-medium py-2 px-4 rounded-lg transition-colors">
+                <i class="fas fa-shopping-cart mr-2"></i>Buy Now
+              </button>
+              <button onclick="openViewModal('guava-tree')" class="border border-green-600 text-green-600 hover:bg-green-50 font-medium py-2 px-4 rounded-lg transition-colors">
+                <i class="fas fa-eye mr-2"></i>View Details
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Marketplace Card 5 -->
+        <div class="marketplace-card bg-white rounded-xl overflow-hidden shadow-lg relative">
+          <div class="badge badge-new">NEW</div>
+          <div class="price-tag">$18</div>
+          <img src="img/banana tree.jpg" alt="Banana Tree" class="w-full h-48 object-cover">
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-gray-800 mb-2">Banana Tree</h3>
+            <p class="text-gray-600 mb-4">Dwarf banana variety, perfect for home gardens. Will bear fruit in 8-10 months.</p>
+            <div class="seller-info mb-4">
+              <img src="https://randomuser.me/api/portraits/men/51.jpg" alt="Seller" class="seller-avatar">
+              <div>
+                <p class="font-medium text-gray-800">Abdul Malek</p>
+                <p class="text-sm text-gray-600">Barisal, Bangladesh</p>
+              </div>
+            </div>
+            <div class="flex justify-between">
+              <button onclick="openBuyModal('banana-tree')" class="bg-green-600 hover:bg-green-700 text-white font-medium py-2 px-4 rounded-lg transition-colors">
+                <i class="fas fa-shopping-cart mr-2"></i>Buy Now
+              </button>
+              <button onclick="openViewModal('banana-tree')" class="border border-green-600 text-green-600 hover:bg-green-50 font-medium py-2 px-4 rounded-lg transition-colors">
+                <i class="fas fa-eye mr-2"></i>View Details
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Marketplace Card 6 -->
+        <div class="marketplace-card bg-white rounded-xl overflow-hidden shadow-lg relative">
+          <div class="price-tag">$35</div>
+          <img src="img/rose.jpg" alt="Rose Plant" class="w-full h-48 object-cover">
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-gray-800 mb-2">Rose Plant Collection</h3>
+            <p class="text-gray-600 mb-4">Set of 5 different colored rose plants. Perfect for garden decoration.</p>
+            <div class="seller-info mb-4">
+              <img src="https://randomuser.me/api/portraits/women/63.jpg" alt="Seller" class="seller-avatar">
+              <div>
+                <p class="font-medium text-gray-800">Nusrat Jahan</p>
+                <p class="text-sm text-gray-600">Chittagong, Bangladesh</p>
+              </div>
+            </div>
+            <div class="flex justify-between">
+              <button onclick="openBuyModal('rose-collection')" class="bg-green-600 hover:bg-green-700 text-white font-medium py-2 px-4 rounded-lg transition-colors">
+                <i class="fas fa-shopping-cart mr-2"></i>Buy Now
+              </button>
+              <button onclick="openViewModal('rose-collection')" class="border border-green-600 text-green-600 hover:bg-green-50 font-medium py-2 px-4 rounded-lg transition-colors">
+                <i class="fas fa-eye mr-2"></i>View Details
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- About Section -->
   <section id="about" class="py-20 bg-gradient-to-br from-green-50 to-emerald-100">
     <div class="max-w-6xl mx-auto px-6">
@@ -480,6 +705,7 @@
           <ul class="space-y-2">
             <li><a href="#home" class="text-gray-300 hover:text-green-400 transition-colors">Home</a></li>
             <li><a href="#trees" class="text-gray-300 hover:text-green-400 transition-colors">Trees</a></li>
+            <li><a href="#marketplace" class="text-gray-300 hover:text-green-400 transition-colors">Marketplace</a></li>
             <li><a href="#about" class="text-gray-300 hover:text-green-400 transition-colors">About</a></li>
             <li><a href="#plant" class="text-gray-300 hover:text-green-400 transition-colors">Plant a Tree</a></li>
           </ul>
@@ -510,7 +736,7 @@
     </div>
   </footer>
 
-  <!-- Modal -->
+  <!-- Tree Details Modal -->
   <div id="treeModal" class="modal hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
     <div class="modal-content max-w-2xl w-full p-8">
       <div class="flex justify-between items-start mb-6">
@@ -547,6 +773,200 @@
       <a href="#plant" onclick="closeModal()" class="btn-primary text-white font-semibold py-3 px-6 rounded-lg block text-center">
         <i class="fas fa-seedling mr-2"></i>Plant a Tree Like This
       </a>
+    </div>
+  </div>
+
+  <!-- Buy Modal -->
+  <div id="buyModal" class="modal hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+    <div class="modal-content max-w-2xl w-full p-8">
+      <div class="flex justify-between items-start mb-6">
+        <h3 class="text-2xl font-bold text-gray-800">Purchase Tree</h3>
+        <button onclick="closeBuyModal()" class="text-gray-500 hover:text-gray-700">
+          <i class="fas fa-times text-xl"></i>
+        </button>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+        <img id="buyModalImage" src="" alt="" class="w-full h-64 object-cover rounded-lg">
+        <div>
+          <h4 id="buyModalTitle" class="text-xl font-bold text-gray-800 mb-2"></h4>
+          <p id="buyModalPrice" class="text-2xl font-bold text-green-600 mb-4"></p>
+          <p id="buyModalDescription" class="text-gray-700 mb-4"></p>
+          <div class="space-y-2 mb-4">
+            <div class="flex items-center">
+              <i class="fas fa-user text-green-600 w-6"></i>
+              <span id="buyModalSeller" class="text-gray-700"></span>
+            </div>
+            <div class="flex items-center">
+              <i class="fas fa-map-marker-alt text-green-600 w-6"></i>
+              <span id="buyModalLocation" class="text-gray-700"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="bg-gray-50 p-6 rounded-lg mb-6">
+        <h4 class="font-bold text-gray-800 mb-4">Shipping Information</h4>
+        <form class="space-y-4">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <input type="text" placeholder="Full Name" class="px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-green-500">
+            <input type="text" placeholder="Phone Number" class="px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-green-500">
+          </div>
+          <input type="text" placeholder="Address" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-green-500">
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <input type="text" placeholder="City" class="px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-green-500">
+            <input type="text" placeholder="State" class="px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-green-500">
+            <input type="text" placeholder="ZIP Code" class="px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-green-500">
+          </div>
+        </form>
+      </div>
+      
+      <div class="flex justify-between items-center">
+        <div class="text-lg">
+          <span class="text-gray-600">Total:</span>
+          <span id="buyModalTotal" class="font-bold text-green-600 ml-2"></span>
+        </div>
+        <div class="space-x-4">
+          <button onclick="closeBuyModal()" class="border border-gray-300 text-gray-700 font-medium py-2 px-6 rounded-lg hover:bg-gray-100 transition-colors">
+            Cancel
+          </button>
+          <button onclick="processPurchase()" class="btn-primary text-white font-semibold py-2 px-6 rounded-lg">
+            <i class="fas fa-credit-card mr-2"></i>Complete Purchase
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- View Details Modal -->
+  <div id="viewModal" class="modal hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+    <div class="modal-content max-w-2xl w-full p-8">
+      <div class="flex justify-between items-start mb-6">
+        <h3 id="viewModalTitle" class="text-2xl font-bold text-gray-800"></h3>
+        <button onclick="closeViewModal()" class="text-gray-500 hover:text-gray-700">
+          <i class="fas fa-times text-xl"></i>
+        </button>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+        <img id="viewModalImage" src="" alt="" class="w-full h-64 object-cover rounded-lg">
+        <div>
+          <p id="viewModalPrice" class="text-2xl font-bold text-green-600 mb-2"></p>
+          <p id="viewModalDescription" class="text-gray-700 mb-4"></p>
+          <div class="space-y-2">
+            <div class="flex items-center">
+              <i class="fas fa-user text-green-600 w-6"></i>
+              <span id="viewModalSeller" class="text-gray-700"></span>
+            </div>
+            <div class="flex items-center">
+              <i class="fas fa-map-marker-alt text-green-600 w-6"></i>
+              <span id="viewModalLocation" class="text-gray-700"></span>
+            </div>
+            <div class="flex items-center">
+              <i class="fas fa-ruler-vertical text-green-600 w-6"></i>
+              <span id="viewModalHeight" class="text-gray-700"></span>
+            </div>
+            <div class="flex items-center">
+              <i class="fas fa-calendar-alt text-green-600 w-6"></i>
+              <span id="viewModalAge" class="text-gray-700"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="bg-green-50 p-4 rounded-lg mb-6">
+        <h4 class="font-bold text-green-800 mb-2">Care Instructions</h4>
+        <p id="viewModalCare" class="text-green-700"></p>
+      </div>
+      
+      <div class="flex justify-between">
+        <button onclick="closeViewModal()" class="border border-gray-300 text-gray-700 font-medium py-2 px-6 rounded-lg hover:bg-gray-100 transition-colors">
+          Close
+        </button>
+        <button onclick="closeViewModal(); openBuyModal(currentViewId);" class="btn-primary text-white font-semibold py-2 px-6 rounded-lg">
+          <i class="fas fa-shopping-cart mr-2"></i>Buy Now
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sell Modal -->
+  <div id="sellModal" class="modal hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+    <div class="modal-content max-w-2xl w-full p-8">
+      <div class="flex justify-between items-start mb-6">
+        <h3 class="text-2xl font-bold text-gray-800">Sell a Tree</h3>
+        <button onclick="closeSellModal()" class="text-gray-500 hover:text-gray-700">
+          <i class="fas fa-times text-xl"></i>
+        </button>
+      </div>
+      
+      <form id="sellTreeForm" class="space-y-4">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-gray-700 mb-2">Tree Name</label>
+            <input type="text" id="sellTreeName" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-green-500">
+          </div>
+          <div>
+            <label class="block text-gray-700 mb-2">Price (USD)</label>
+            <input type="number" id="sellTreePrice" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-green-500">
+          </div>
+        </div>
+        
+        <div>
+          <label class="block text-gray-700 mb-2">Tree Type</label>
+          <select id="sellTreeType" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-green-500">
+            <option value="">Select a type</option>
+            <option value="fruit">Fruit Tree</option>
+            <option value="flower">Flowering Tree</option>
+            <option value="native">Native Tree</option>
+            <option value="shade">Shade Tree</option>
+            <option value="evergreen">Evergreen</option>
+          </select>
+        </div>
+        
+        <div>
+          <label class="block text-gray-700 mb-2">Description</label>
+          <textarea id="sellTreeDescription" rows="4" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-green-500"></textarea>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-gray-700 mb-2">Tree Age</label>
+            <input type="text" id="sellTreeAge" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-green-500">
+          </div>
+          <div>
+            <label class="block text-gray-700 mb-2">Tree Height</label>
+            <input type="text" id="sellTreeHeight" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-green-500">
+          </div>
+        </div>
+        
+        <div>
+          <label class="block text-gray-700 mb-2">Image URL</label>
+          <input type="url" id="sellTreeImage" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-green-500">
+        </div>
+        
+        <div>
+          <label class="block text-gray-700 mb-2">Your Location</label>
+          <input type="text" id="sellTreeLocation" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-green-500">
+        </div>
+        
+        <div>
+          <label class="block text-gray-700 mb-2">Your Name</label>
+          <input type="text" id="sellerName" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-green-500">
+        </div>
+        
+        <div>
+          <label class="block text-gray-700 mb-2">Contact Email</label>
+          <input type="email" id="sellerEmail" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-green-500">
+        </div>
+        
+        <div class="flex justify-end space-x-4 pt-4">
+          <button type="button" onclick="closeSellModal()" class="border border-gray-300 text-gray-700 font-medium py-2 px-6 rounded-lg hover:bg-gray-100 transition-colors">
+            Cancel
+          </button>
+          <button type="submit" class="btn-primary text-white font-semibold py-2 px-6 rounded-lg">
+            <i class="fas fa-plus mr-2"></i>List Tree
+          </button>
+        </div>
+      </form>
     </div>
   </div>
 
@@ -657,6 +1077,147 @@
       document.getElementById('treeModal').classList.add('hidden');
     }
 
+    // Marketplace modals
+    let currentBuyId = '';
+    let currentViewId = '';
+
+    const marketplaceTrees = {
+      'jackfruit-sapling': {
+        title: 'Jackfruit Sapling',
+        price: '$45',
+        description: 'Healthy 2-year-old jackfruit sapling ready for planting. Grown organically in ideal conditions.',
+        seller: 'Rahim Khan',
+        location: 'Dhaka, Bangladesh',
+        image: 'img/jackfruit1.jpg',
+        height: 'Height: 1.5 meters',
+        age: 'Age: 2 years',
+        care: 'Plant in well-drained soil with plenty of sunlight. Water regularly but avoid waterlogging. Fertilize every 3 months during growing season.'
+      },
+      'mango-tree': {
+        title: 'Mango Tree',
+        price: '$32',
+        description: 'Premium variety mango tree, 3 years old. Will bear fruit next season. Disease resistant.',
+        seller: 'Fatima Ahmed',
+        location: 'Rajshahi, Bangladesh',
+        image: 'img/mango tree.jpg',
+        height: 'Height: 2 meters',
+        age: 'Age: 3 years',
+        care: 'Requires full sun and well-drained soil. Water deeply but infrequently. Prune in late winter to maintain shape.'
+      },
+      'lychee-tree': {
+        title: 'Lychee Tree',
+        price: '$28',
+        description: 'Healthy lychee sapling, 2 years old. Sweet variety with high yield potential.',
+        seller: 'Karim Uddin',
+        location: 'Sylhet, Bangladesh',
+        image: 'img/lychee tree.jpg',
+        height: 'Height: 1.2 meters',
+        age: 'Age: 2 years',
+        care: 'Plant in acidic soil in a protected area. Protect from strong winds. Mulch to retain moisture.'
+      },
+      'guava-tree': {
+        title: 'Guava Tree',
+        price: '$22',
+        description: 'Organically grown guava tree, 2.5 years old. High vitamin C variety.',
+        seller: 'Ayesha Siddiqua',
+        location: 'Khulna, Bangladesh',
+        image: 'img/guvava tree.jpg',
+        height: 'Height: 1.8 meters',
+        age: 'Age: 2.5 years',
+        care: 'Thrives in full sun. Tolerates a wide range of soils. Water regularly during fruit development.'
+      },
+      'banana-tree': {
+        title: 'Banana Tree',
+        price: '$18',
+        description: 'Dwarf banana variety, perfect for home gardens. Will bear fruit in 8-10 months.',
+        seller: 'Abdul Malek',
+        location: 'Barisal, Bangladesh',
+        image: 'img/banana tree.jpg',
+        height: 'Height: 1 meter',
+        age: 'Age: 1 year',
+        care: 'Needs rich, well-drained soil and plenty of water. Protect from strong winds. Remove dead leaves regularly.'
+      },
+      'rose-collection': {
+        title: 'Rose Plant Collection',
+        price: '$35',
+        description: 'Set of 5 different colored rose plants. Perfect for garden decoration.',
+        seller: 'Nusrat Jahan',
+        location: 'Chittagong, Bangladesh',
+        image: 'img/rose.jpg',
+        height: 'Height: 0.5 meters',
+        age: 'Age: 6 months',
+        care: 'Plant in well-drained soil with full sun. Water at the base to keep foliage dry. Prune in early spring.'
+      }
+    };
+
+    function openBuyModal(treeId) {
+      currentBuyId = treeId;
+      const modal = document.getElementById('buyModal');
+      const tree = marketplaceTrees[treeId];
+      
+      document.getElementById('buyModalTitle').textContent = tree.title;
+      document.getElementById('buyModalPrice').textContent = tree.price;
+      document.getElementById('buyModalDescription').textContent = tree.description;
+      document.getElementById('buyModalSeller').textContent = tree.seller;
+      document.getElementById('buyModalLocation').textContent = tree.location;
+      document.getElementById('buyModalImage').src = tree.image;
+      document.getElementById('buyModalImage').alt = tree.title;
+      document.getElementById('buyModalTotal').textContent = tree.price;
+      
+      modal.classList.remove('hidden');
+    }
+
+    function closeBuyModal() {
+      document.getElementById('buyModal').classList.add('hidden');
+    }
+
+    function openViewModal(treeId) {
+      currentViewId = treeId;
+      const modal = document.getElementById('viewModal');
+      const tree = marketplaceTrees[treeId];
+      
+      document.getElementById('viewModalTitle').textContent = tree.title;
+      document.getElementById('viewModalPrice').textContent = tree.price;
+      document.getElementById('viewModalDescription').textContent = tree.description;
+      document.getElementById('viewModalSeller').textContent = tree.seller;
+      document.getElementById('viewModalLocation').textContent = tree.location;
+      document.getElementById('viewModalHeight').textContent = tree.height;
+      document.getElementById('viewModalAge').textContent = tree.age;
+      document.getElementById('viewModalCare').textContent = tree.care;
+      document.getElementById('viewModalImage').src = tree.image;
+      document.getElementById('viewModalImage').alt = tree.title;
+      
+      modal.classList.remove('hidden');
+    }
+
+    function closeViewModal() {
+      document.getElementById('viewModal').classList.add('hidden');
+    }
+
+    function openSellModal() {
+      document.getElementById('sellModal').classList.remove('hidden');
+    }
+
+    function closeSellModal() {
+      document.getElementById('sellModal').classList.add('hidden');
+    }
+
+    function processPurchase() {
+      // In a real application, this would process the payment
+      alert('Thank you for your purchase! Your tree will be shipped within 3-5 business days.');
+      closeBuyModal();
+    }
+
+    // Handle sell tree form submission
+    document.getElementById('sellTreeForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      // In a real application, this would send the data to a server
+      alert('Thank you for listing your tree! It will be reviewed and added to the marketplace shortly.');
+      closeSellModal();
+      this.reset();
+    });
+
     // Search functionality
     const searchInput = document.getElementById('searchInput');
     searchInput.addEventListener('input', function() {
@@ -713,6 +1274,10 @@
     }, observerOptions);
 
     document.querySelectorAll('.tree-card').forEach(card => {
+      observer.observe(card);
+    });
+
+    document.querySelectorAll('.marketplace-card').forEach(card => {
       observer.observe(card);
     });
   </script>
