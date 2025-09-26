@@ -1589,4 +1589,92 @@
       document.getElementById('viewModal').classList.remove('active');
     }
 
-    function openSell
+    function openSellModal() {
+      document.getElementById('sellModal').classList.add('active');
+    }
+
+    function closeSellModal() {
+      document.getElementById('sellModal').classList.remove('active');
+    }
+
+    function processPurchase() {
+      // In a real application, this would process the payment
+      alert('Thank you for your purchase! Your tree will be shipped within 3-5 business days.');
+      closeBuyModal();
+    }
+
+    // Handle sell tree form submission
+    document.getElementById('sellTreeForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      // In a real application, this would send the data to a server
+      alert('Thank you for listing your tree! It will be reviewed and added to the marketplace shortly.');
+      closeSellModal();
+      this.reset();
+    });
+
+    // Search functionality
+    const searchInput = document.getElementById('searchInput');
+    searchInput.addEventListener('input', function() {
+      const searchTerm = this.value.toLowerCase();
+      const treeCards = document.querySelectorAll('.tree-card');
+      
+      treeCards.forEach(card => {
+        const title = card.querySelector('h3').textContent.toLowerCase();
+        const description = card.querySelector('p').textContent.toLowerCase();
+        
+        if (title.includes(searchTerm) || description.includes(searchTerm)) {
+          card.style.display = 'block';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    });
+
+    // Filter functionality
+    const filterButtons = document.querySelectorAll('.filter-pill');
+    filterButtons.forEach(button => {
+      button.addEventListener('click', function() {
+        // Remove active class from all buttons
+        filterButtons.forEach(btn => btn.classList.remove('active'));
+        // Add active class to clicked button
+        this.classList.add('active');
+        
+        const filter = this.getAttribute('data-filter');
+        const treeCards = document.querySelectorAll('.tree-card');
+        
+        treeCards.forEach(card => {
+          if (filter === 'all' || card.getAttribute('data-category').includes(filter)) {
+            card.style.display = 'block';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    });
+
+    // Add animation on scroll
+    const observerOptions = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.1
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('animate-fadeInUp');
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.tree-card').forEach(card => {
+      observer.observe(card);
+    });
+
+    document.querySelectorAll('.marketplace-card').forEach(card => {
+      observer.observe(card);
+    });
+  </script>
+</body>
+</html>
