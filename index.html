@@ -1,152 +1,1683 @@
-<!-- Marketplace Card 1 -->
-<div class="marketplace-card">
-  <div class="badge badge-new">NEW</div>
-  <div class="price-tag">Tk 4500</div>
-  <img src="img/jackfruit1.jpg" alt="Jackfruit Sapling">
-  <div class="p-6">
-    <h3 class="text-xl font-bold text-gray-800 mb-2">Jackfruit Sapling</h3>
-    <p class="text-gray-600 mb-4">Healthy 2-year-old jackfruit sapling ready for planting.</p>
-    <div class="seller-info mb-4">
-      <img src="" alt="Seller" class="seller-avatar">
-      <div>
-        <p class="font-medium text-gray-800">Redwan</p>
-        <p class="text-sm text-gray-600">Dhaka, Bangladesh</p>
-      </div>
-    </div>
-    <div class="flex justify-between">
-      <button onclick="openBuyModal('jackfruit-sapling')" class="btn-primary text-sm">
-        <i class="fas fa-shopping-cart mr-2"></i>Buy Now
-      </button>
-      <button onclick="openViewModal('jackfruit-sapling')" class="btn-secondary text-sm">
-        <i class="fas fa-eye mr-2"></i>View Details
-      </button>
-    </div>
-  </div>
-</div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Trees17 – Explore Amazing Trees</title>
 
-<!-- Marketplace Card 2 -->
-<div class="marketplace-card">
-  <div class="badge badge-popular">POPULAR</div>
-  <div class="price-tag">Tk 3200</div>
-  <img src="img/mango tree.jpg" alt="Mango Tree">
-  <div class="p-6">
-    <h3 class="text-xl font-bold text-gray-800 mb-2">Mango Tree</h3>
-    <p class="text-gray-600 mb-4">Premium variety mango tree, 3 years old. Will bear fruit next season.</p>
-    <div class="seller-info mb-4">
-      <img src="" alt="Seller" class="seller-avatar">
-      <div>
-        <p class="font-medium text-gray-800">Karim</p>
-        <p class="text-sm text-gray-600">Rajshahi, Bangladesh</p>
-      </div>
-    </div>
-    <div class="flex justify-between">
-      <button onclick="openBuyModal('mango-tree')" class="btn-primary text-sm">
-        <i class="fas fa-shopping-cart mr-2"></i>Buy Now
-      </button>
-      <button onclick="openViewModal('mango-tree')" class="btn-secondary text-sm">
-        <i class="fas fa-eye mr-2"></i>View Details
-      </button>
-    </div>
-  </div>
-</div>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Font Awesome for Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-<!-- Marketplace Card 3 -->
-<div class="marketplace-card">
-  <div class="price-tag">Tk 2800</div>
-  <img src="img/lychee tree.jpg" alt="Lychee Tree">
-  <div class="p-6">
-    <h3 class="text-xl font-bold text-gray-800 mb-2">Lychee Tree</h3>
-    <p class="text-gray-600 mb-4">Healthy lychee sapling, 2 years old. Sweet variety with high yield potential.</p>
-    <div class="seller-info mb-4">
-      <img src="" alt="Seller" class="seller-avatar">
-      <div>
-        <p class="font-medium text-gray-800">Liton</p>
-        <p class="text-sm text-gray-600">Sylhet, Bangladesh</p>
-      </div>
-    </div>
-    <div class="flex justify-between">
-      <button onclick="openBuyModal('lychee-tree')" class="btn-primary text-sm">
-        <i class="fas fa-shopping-cart mr-2"></i>Buy Now
-      </button>
-      <button onclick="openViewModal('lychee-tree')" class="btn-secondary text-sm">
-        <i class="fas fa-eye mr-2"></i>View Details
-      </button>
-    </div>
-  </div>
-</div>
+  <style>
+    :root {
+      --primary-green: #2e7d32;
+      --light-green: #66bb6a;
+      --accent-yellow: #ffd54f;
+      --dark-green: #1b5e20;
+      --light-gray: #f5f7f6;
+      --medium-gray: #e0e2e1;
+    }
+    
+    body {
+      font-family: 'Poppins', sans-serif;
+      color: #333;
+    }
+    
+    h1, h2, h3 {
+      font-family: 'Playfair Display', serif;
+    }
+    
+    /* Professional Card Styles */
+    .tree-card {
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    }
+    
+    .tree-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+    }
+    
+    .tree-card img {
+      transition: transform 0.5s ease;
+      height: 100%;
+      object-fit: cover;
+    }
+    
+    .tree-card:hover img {
+      transform: scale(1.05);
+    }
+    
+    .tree-card-content {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 1.5rem;
+      background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.4) 60%, transparent 100%);
+      color: white;
+      z-index: 2;
+    }
+    
+    /* Professional Button Styles */
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary-green), var(--light-green));
+      color: white;
+      font-weight: 600;
+      padding: 0.75rem 1.5rem;
+      border-radius: 50px;
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      box-shadow: 0 4px 15px rgba(46, 125, 50, 0.3);
+    }
+    
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(46, 125, 50, 0.4);
+    }
+    
+    .btn-secondary {
+      background: white;
+      color: var(--primary-green);
+      font-weight: 600;
+      padding: 0.75rem 1.5rem;
+      border-radius: 50px;
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      border: 2px solid var(--primary-green);
+    }
+    
+    .btn-secondary:hover {
+      background: var(--light-gray);
+      transform: translateY(-3px);
+    }
+    
+    /* Professional Navigation */
+    .navbar {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
+    }
+    
+    .nav-link {
+      font-weight: 500;
+      color: #333;
+      position: relative;
+      transition: color 0.3s ease;
+    }
+    
+    .nav-link:after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--primary-green);
+      transition: width 0.3s ease;
+    }
+    
+    .nav-link:hover {
+      color: var(--primary-green);
+    }
+    
+    .nav-link:hover:after {
+      width: 100%;
+    }
+    
+    /* Professional Hero Section */
+    .hero {
+      position: relative;
+      height: 90vh;
+      min-height: 600px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    
+    .hero-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url('https://images.unsplash.com/photo-1441974231531-c6227db76b6e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80');
+      background-size: cover;
+      background-position: center;
+      filter: brightness(0.7);
+      z-index: -2;
+    }
+    
+    .hero-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, rgba(46, 125, 50, 0.7) 0%, rgba(27, 94, 32, 0.8) 100%);
+      z-index: -1;
+    }
+    
+    /* Professional Section Styles */
+    .section {
+      padding: 100px 0;
+    }
+    
+    .section-title {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--dark-green);
+      margin-bottom: 1rem;
+      position: relative;
+      display: inline-block;
+    }
+    
+    .section-title:after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      width: 60px;
+      height: 4px;
+      background: var(--accent-yellow);
+    }
+    
+    .section-subtitle {
+      font-size: 1.1rem;
+      color: #666;
+      max-width: 700px;
+      margin: 0 auto 3rem;
+    }
+    
+    /* Professional Marketplace Cards */
+    .marketplace-card {
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      transition: all 0.3s ease;
+      position: relative;
+    }
+    
+    .marketplace-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+    }
+    
+    .marketplace-card img {
+      height: 220px;
+      object-fit: cover;
+      width: 100%;
+    }
+    
+    .price-tag {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      background: white;
+      color: var(--primary-green);
+      font-weight: 700;
+      padding: 0.5rem 1rem;
+      border-radius: 50px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+    
+    .badge {
+      position: absolute;
+      top: 15px;
+      left: 15px;
+      padding: 0.4rem 0.8rem;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+    
+    .badge-new {
+      background-color: var(--primary-green);
+      color: white;
+    }
+    
+    .badge-popular {
+      background-color: var(--accent-yellow);
+      color: var(--dark-green);
+    }
+    
+    /* Professional Search Box */
+    .search-container {
+      max-width: 600px;
+      margin: 0 auto;
+      position: relative;
+    }
+    
+    .search-box {
+      width: 100%;
+      padding: 1rem 1.5rem 1rem 4rem;
+      border-radius: 50px;
+      border: 2px solid var(--medium-gray);
+      font-size: 1rem;
+      transition: all 0.3s ease;
+    }
+    
+    .search-box:focus {
+      border-color: var(--primary-green);
+      box-shadow: 0 0 0 3px rgba(46, 125, 50, 0.2);
+      outline: none;
+    }
+    
+    .search-icon {
+      position: absolute;
+      left: 1.5rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #999;
+    }
+    
+    /* Professional Filter Pills */
+    .filter-container {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin: 2rem 0;
+    }
+    
+    .filter-pill {
+      padding: 0.5rem 1.25rem;
+      border-radius: 50px;
+      background: white;
+      color: #555;
+      font-weight: 500;
+      border: 2px solid var(--medium-gray);
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+    
+    .filter-pill:hover {
+      border-color: var(--primary-green);
+      color: var(--primary-green);
+    }
+    
+    .filter-pill.active {
+      background: var(--primary-green);
+      color: white;
+      border-color: var(--primary-green);
+    }
+    
+    /* Professional Testimonial Styles */
+    .testimonial-card {
+      background: white;
+      border-radius: 12px;
+      padding: 2rem;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      position: relative;
+    }
+    
+    .testimonial-card:before {
+      content: '"';
+      position: absolute;
+      top: 1rem;
+      left: 1.5rem;
+      font-size: 4rem;
+      color: var(--medium-gray);
+      font-family: 'Playfair Display', serif;
+      line-height: 1;
+      opacity: 0.3;
+    }
+    
+    .testimonial-text {
+      font-style: italic;
+      margin-bottom: 1.5rem;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    
+    .testimonial-avatar {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+    
+    /* Professional Footer */
+    .footer {
+      background: var(--dark-green);
+      color: white;
+      padding: 80px 0 40px;
+    }
+    
+    .footer-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      position: relative;
+      display: inline-block;
+    }
+    
+    .footer-title:after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      width: 40px;
+      height: 3px;
+      background: var(--accent-yellow);
+    }
+    
+    .footer-link {
+      color: rgba(255, 255, 255, 0.8);
+      display: block;
+      padding: 0.5rem 0;
+      transition: color 0.3s ease;
+    }
+    
+    .footer-link:hover {
+      color: white;
+      padding-left: 5px;
+    }
+    
+    .social-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+      color: white;
+      margin-right: 0.75rem;
+      transition: all 0.3s ease;
+    }
+    
+    .social-icon:hover {
+      background: var(--accent-yellow);
+      color: var(--dark-green);
+      transform: translateY(-3px);
+    }
+    
+    .newsletter-form {
+      display: flex;
+      gap: 0.75rem;
+      margin-top: 1.5rem;
+    }
+    
+    .newsletter-input {
+      flex: 1;
+      padding: 0.75rem 1.25rem;
+      border-radius: 50px;
+      border: none;
+      background: rgba(255, 255, 255, 0.1);
+      color: white;
+      backdrop-filter: blur(10px);
+    }
+    
+    .newsletter-input::placeholder {
+      color: rgba(255, 255, 255, 0.6);
+    }
+    
+    .newsletter-button {
+      background: var(--accent-yellow);
+      color: var(--dark-green);
+      border: none;
+      border-radius: 50px;
+      padding: 0.75rem 1.5rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .newsletter-button:hover {
+      background: white;
+      transform: translateY(-3px);
+    }
+    
+    /* Professional Modal Styles */
+    .modal {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      z-index: 1000;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+    }
+    
+    .modal.active {
+      opacity: 1;
+      visibility: visible;
+    }
+    
+    .modal-content {
+      background: white;
+      border-radius: 16px;
+      max-width: 800px;
+      width: 90%;
+      max-height: 90vh;
+      overflow-y: auto;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+      transform: translateY(30px);
+      transition: transform 0.3s ease;
+    }
+    
+    .modal.active .modal-content {
+      transform: translateY(0);
+    }
+    
+    .modal-header {
+      padding: 1.5rem 2rem;
+      border-bottom: 1px solid var(--medium-gray);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .modal-title {
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: var(--dark-green);
+    }
+    
+    .modal-close {
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      color: #999;
+      cursor: pointer;
+      transition: color 0.3s ease;
+    }
+    
+    .modal-close:hover {
+      color: #333;
+    }
+    
+    .modal-body {
+      padding: 2rem;
+    }
+    
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+    
+    .form-label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+      color: #555;
+    }
+    
+    .form-input, .form-select, .form-textarea {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      border: 2px solid var(--medium-gray);
+      border-radius: 8px;
+      font-size: 1rem;
+      transition: border-color 0.3s ease;
+    }
+    
+    .form-input:focus, .form-select:focus, .form-textarea:focus {
+      border-color: var(--primary-green);
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(46, 125, 50, 0.2);
+    }
+    
+    .form-textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+    
+    .form-row {
+      display: flex;
+      gap: 1.5rem;
+    }
+    
+    .form-row .form-group {
+      flex: 1;
+    }
+    
+    .form-actions {
+      display: flex;
+      justify-content: flex-end;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+    
+    .btn-cancel {
+      background: white;
+      color: #666;
+      border: 2px solid var(--medium-gray);
+      padding: 0.75rem 1.5rem;
+      border-radius: 8px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .btn-cancel:hover {
+      background: var(--light-gray);
+    }
+    
+    .btn-submit {
+      background: var(--primary-green);
+      color: white;
+      border: none;
+      padding: 0.75rem 1.5rem;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .btn-submit:hover {
+      background: var(--dark-green);
+      transform: translateY(-2px);
+    }
+    
+    /* Responsive Styles */
+    @media (max-width: 768px) {
+      .section {
+        padding: 60px 0;
+      }
+      
+      .section-title {
+        font-size: 2rem;
+      }
+      
+      .hero {
+        height: 70vh;
+      }
+      
+      .form-row {
+        flex-direction: column;
+        gap: 0;
+      }
+      
+      .modal-content {
+        width: 95%;
+        margin: 1rem;
+      }
+      
+      .modal-body {
+        padding: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body class="bg-light-gray">
 
-<!-- Marketplace Card 4 -->
-<div class="marketplace-card">
-  <div class="price-tag">Tk 2200</div>
-  <img src="img/guvava tree.jpg" alt="Guava Tree">
-  <div class="p-6">
-    <h3 class="text-xl font-bold text-gray-800 mb-2">Guava Tree</h3>
-    <p class="text-gray-600 mb-4">Organically grown guava tree, 2.5 years old. High vitamin C variety.</p>
-    <div class="seller-info mb-4">
-      <img src="" alt="Seller" class="seller-avatar">
-      <div>
-        <p class="font-medium text-gray-800">Parvin</p>
-        <p class="text-sm text-gray-600">Khulna, Bangladesh</p>
+  <!-- Professional Navigation -->
+  <nav class="navbar fixed top-0 w-full z-50">
+    <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+      <div class="flex items-center space-x-2">
+        <div class="w-10 h-10 rounded-full bg-primary-green flex items-center justify-center">
+          <i class="fas fa-tree text-white text-xl"></i>
+        </div>
+        <span class="text-2xl font-bold text-dark-green">Trees17</span>
       </div>
-    </div>
-    <div class="flex justify-between">
-      <button onclick="openBuyModal('guava-tree')" class="btn-primary text-sm">
-        <i class="fas fa-shopping-cart mr-2"></i>Buy Now
+      <div class="hidden md:flex space-x-8">
+        <a href="#home" class="nav-link">Home</a>
+        <a href="#trees" class="nav-link">Trees</a>
+        <a href="#marketplace" class="nav-link">Marketplace</a>
+        <a href="#about" class="nav-link">About</a>
+        <a href="#plant" class="nav-link">Plant a Tree</a>
+      </div>
+      <button class="md:hidden text-dark-green">
+        <i class="fas fa-bars text-xl"></i>
       </button>
-      <button onclick="openViewModal('guava-tree')" class="btn-secondary text-sm">
-        <i class="fas fa-eye mr-2"></i>View Details
-      </button>
     </div>
-  </div>
-</div>
+  </nav>
 
-<!-- Marketplace Card 5 -->
-<div class="marketplace-card">
-  <div class="badge badge-new">NEW</div>
-  <div class="price-tag">Tk 1800</div>
-  <img src="img/banana tree.jpg" alt="Banana Tree">
-  <div class="p-6">
-    <h3 class="text-xl font-bold text-gray-800 mb-2">Banana Tree</h3>
-    <p class="text-gray-600 mb-4">Dwarf banana variety, perfect for home gardens. Will bear fruit in 8-10 months.</p>
-    <div class="seller-info mb-4">
-      <img src="" alt="Seller" class="seller-avatar">
-      <div>
-        <p class="font-medium text-gray-800">Mahmud</p>
-        <p class="text-sm text-gray-600">Barisal, Bangladesh</p>
+  <!-- Professional Hero Section -->
+  <header id="home" class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+    
+    <div class="container mx-auto px-6 text-center relative z-10">
+      <h1 class="text-5xl md:text-7xl font-extrabold text-white mb-6">Discover Nature's Giants</h1>
+      <p class="text-xl md:text-2xl text-white max-w-3xl mx-auto leading-relaxed mb-10">
+        Explore the world's most magnificent trees. Each with a unique story to tell.
+      </p>
+      <div class="flex flex-col sm:flex-row justify-center gap-4">
+        <a href="#trees" class="btn-primary">
+          <i class="fas fa-leaf mr-2"></i>Explore Trees
+        </a>
+        <a href="#marketplace" class="btn-secondary">
+          <i class="fas fa-shopping-cart mr-2"></i>Visit Marketplace
+        </a>
       </div>
     </div>
-    <div class="flex justify-between">
-      <button onclick="openBuyModal('banana-tree')" class="btn-primary text-sm">
-        <i class="fas fa-shopping-cart mr-2"></i>Buy Now
-      </button>
-      <button onclick="openViewModal('banana-tree')" class="btn-secondary text-sm">
-        <i class="fas fa-eye mr-2"></i>View Details
-      </button>
-    </div>
-  </div>
-</div>
+  </header>
 
-<!-- Marketplace Card 6 -->
-<div class="marketplace-card">
-  <div class="price-tag">Tk 3500</div>
-  <img src="img/rose.jpg" alt="Rose Plant">
-  <div class="p-6">
-    <h3 class="text-xl font-bold text-gray-800 mb-2">Rose Plant Collection</h3>
-    <p class="text-gray-600 mb-4">Set of 5 different colored rose plants. Perfect for garden decoration.</p>
-    <div class="seller-info mb-4">
-      <img src="" alt="Seller" class="seller-avatar">
-      <div>
-        <p class="font-medium text-gray-800">Kamal</p>
-        <p class="text-sm text-gray-600">Chittagong, Bangladesh</p>
+  <!-- Professional Search and Filter Section -->
+  <section class="py-12 bg-white">
+    <div class="container mx-auto px-6">
+      <div class="search-container">
+        <i class="fas fa-search search-icon"></i>
+        <input type="text" id="searchInput" placeholder="Search trees..." class="search-box">
+      </div>
+      
+      <div class="filter-container">
+        <button class="filter-pill active" data-filter="all">All Trees</button>
+        <button class="filter-pill" data-filter="fruit">Fruit Trees</button>
+        <button class="filter-pill" data-filter="flower">Flowering</button>
+        <button class="filter-pill" data-filter="native">Native</button>
       </div>
     </div>
-    <div class="flex justify-between">
-      <button onclick="openBuyModal('rose-collection')" class="btn-primary text-sm">
-        <i class="fas fa-shopping-cart mr-2"></i>Buy Now
-      </button>
-      <button onclick="openViewModal('rose-collection')" class="btn-secondary text-sm">
-        <i class="fas fa-eye mr-2"></i>View Details
-      </button>
+  </section>
+
+  <!-- Professional Tree Cards Section -->
+  <main id="trees" class="section">
+    <div class="container mx-auto px-6">
+      <h2 class="section-title text-center">Featured Trees</h2>
+      <p class="section-subtitle text-center">Explore our collection of magnificent trees from around Bangladesh</p>
+
+      <div id="treeGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        
+        <!-- Tree Card 1 -->
+        <div class="tree-card h-96" data-category="fruit native">
+          <img src="img/jackfruit1.jpg" alt="Jackfruit">
+          <div class="tree-card-content">
+            <h3 class="text-2xl font-bold mb-1">Jackfruit</h3>
+            <p class="text-sm mb-2"><i class="fas fa-map-marker-alt mr-1"></i> Sylhet</p>
+            <p class="text-sm mb-4">The national fruit of Bangladesh. Largest tree-borne fruit in the world.</p>
+            <button onclick="openModal('jackfruit')" class="bg-white text-primary-green font-semibold py-2 px-4 rounded-lg transition-colors">
+              Learn More →
+            </button>
+          </div>
+        </div>
+
+        <!-- Tree Card 2 -->
+        <div class="tree-card h-96" data-category="fruit native">
+          <img src="img/lychee tree.jpg" alt="Lychee">
+          <div class="tree-card-content">
+            <h3 class="text-2xl font-bold mb-1">Lychee</h3>
+            <p class="text-sm mb-2"><i class="fas fa-map-marker-alt mr-1"></i> Rajshahi</p>
+            <p class="text-sm mb-4">A sweet tropical fruit enjoyed worldwide. Known for its distinctive floral flavor.</p>
+            <button onclick="openModal('lychee')" class="bg-white text-primary-green font-semibold py-2 px-4 rounded-lg transition-colors">
+              Learn More →
+            </button>
+          </div>
+        </div>
+
+        <!-- Tree Card 3 -->
+        <div class="tree-card h-96" data-category="fruit native">
+          <img src="img/guvava tree.jpg" alt="Guava">
+          <div class="tree-card-content">
+            <h3 class="text-2xl font-bold mb-1">Guava</h3>
+            <p class="text-sm mb-2"><i class="fas fa-map-marker-alt mr-1"></i> Khulna</p>
+            <p class="text-sm mb-4">Rich in vitamin C and fiber. A common tropical fruit with a unique flavor.</p>
+            <button onclick="openModal('guava')" class="bg-white text-primary-green font-semibold py-2 px-4 rounded-lg transition-colors">
+              Learn More →
+            </button>
+          </div>
+        </div>
+
+        <!-- Tree Card 4 -->
+        <div class="tree-card h-96" data-category="fruit native">
+          <img src="img/mango tree.jpg" alt="Mango">
+          <div class="tree-card-content">
+            <h3 class="text-2xl font-bold mb-1">Mango</h3>
+            <p class="text-sm mb-2"><i class="fas fa-map-marker-alt mr-1"></i> Chapainawabganj</p>
+            <p class="text-sm mb-4">Known as the "King of Fruits". National fruit of India and Pakistan.</p>
+            <button onclick="openModal('mango')" class="bg-white text-primary-green font-semibold py-2 px-4 rounded-lg transition-colors">
+              Learn More →
+            </button>
+          </div>
+        </div>
+
+        <!-- Tree Card 5 -->
+        <div class="tree-card h-96" data-category="fruit native">
+          <img src="img/banana tree.jpg" alt="Banana">
+          <div class="tree-card-content">
+            <h3 class="text-2xl font-bold mb-1">Banana</h3>
+            <p class="text-sm mb-2"><i class="fas fa-map-marker-alt mr-1"></i> Barisal</p>
+            <p class="text-sm mb-4">A popular fruit available year-round. One of the most consumed fruits globally.</p>
+            <button onclick="openModal('banana')" class="bg-white text-primary-green font-semibold py-2 px-4 rounded-lg transition-colors">
+              Learn More →
+            </button>
+          </div>
+        </div>
+
+        <!-- Tree Card 6 -->
+        <div class="tree-card h-96" data-category="flower native">
+          <img src="img/rose.jpg" alt="Rose">
+          <div class="tree-card-content">
+            <h3 class="text-2xl font-bold mb-1">Rose</h3>
+            <p class="text-sm mb-2"><i class="fas fa-map-marker-alt mr-1"></i> Dhaka</p>
+            <p class="text-sm mb-4">Symbol of love and beauty. One of the most popular flowering shrubs.</p>
+            <button onclick="openModal('rose')" class="bg-white text-primary-green font-semibold py-2 px-4 rounded-lg transition-colors">
+              Learn More →
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Professional Marketplace Section -->
+  <section id="marketplace" class="section bg-white">
+    <div class="container mx-auto px-6">
+      <h2 class="section-title text-center">Tree Marketplace</h2>
+      <p class="section-subtitle text-center">Buy and sell trees from our community of tree enthusiasts across Bangladesh</p>
+
+      <div class="flex justify-center mb-10">
+        <button onclick="openSellModal()" class="btn-primary">
+          <i class="fas fa-plus mr-2"></i>Sell a Tree
+        </button>
+      </div>
+
+      <div id="marketplaceGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Marketplace Card 1 -->
+        <div class="marketplace-card">
+          <div class="badge badge-new">NEW</div>
+          <div class="price-tag">Tk 4500</div>
+          <img src="img/jackfruit1.jpg" alt="Jackfruit Sapling">
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-gray-800 mb-2">Jackfruit Sapling</h3>
+            <p class="text-gray-600 mb-4">Healthy 2-year-old jackfruit sapling ready for planting.</p>
+            <div class="seller-info mb-4">
+              <img src="" alt="Seller" class="seller-avatar">
+              <div>
+                <p class="font-medium text-gray-800">Redwan</p>
+                <p class="text-sm text-gray-600">Dhaka, Bangladesh</p>
+              </div>
+            </div>
+            <div class="flex justify-between">
+              <button onclick="openBuyModal('jackfruit-sapling')" class="btn-primary text-sm">
+                <i class="fas fa-shopping-cart mr-2"></i>Buy Now
+              </button>
+              <button onclick="openViewModal('jackfruit-sapling')" class="btn-secondary text-sm">
+                <i class="fas fa-eye mr-2"></i>View Details
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Marketplace Card 2 -->
+        <div class="marketplace-card">
+          <div class="badge badge-popular">POPULAR</div>
+          <div class="price-tag">Tk 3200</div>
+          <img src="img/mango tree.jpg" alt="Mango Tree">
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-gray-800 mb-2">Mango Tree</h3>
+            <p class="text-gray-600 mb-4">Premium variety mango tree, 3 years old. Will bear fruit next season.</p>
+            <div class="seller-info mb-4">
+              <img src="" alt="Seller" class="seller-avatar">
+              <div>
+                <p class="font-medium text-gray-800">Karim</p>
+                <p class="text-sm text-gray-600">Rajshahi, Bangladesh</p>
+              </div>
+            </div>
+            <div class="flex justify-between">
+              <button onclick="openBuyModal('mango-tree')" class="btn-primary text-sm">
+                <i class="fas fa-shopping-cart mr-2"></i>Buy Now
+              </button>
+              <button onclick="openViewModal('mango-tree')" class="btn-secondary text-sm">
+                <i class="fas fa-eye mr-2"></i>View Details
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Marketplace Card 3 -->
+        <div class="marketplace-card">
+          <div class="price-tag">Tk 2800</div>
+          <img src="img/lychee tree.jpg" alt="Lychee Tree">
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-gray-800 mb-2">Lychee Tree</h3>
+            <p class="text-gray-600 mb-4">Healthy lychee sapling, 2 years old. Sweet variety with high yield potential.</p>
+            <div class="seller-info mb-4">
+              <img src="" alt="Seller" class="seller-avatar">
+              <div>
+                <p class="font-medium text-gray-800">L</p>
+                <p class="text-sm text-gray-600">Sylhet, Bangladesh</p>
+              </div>
+            </div>
+            <div class="flex justify-between">
+              <button onclick="openBuyModal('lychee-tree')" class="btn-primary text-sm">
+                <i class="fas fa-shopping-cart mr-2"></i>Buy Now
+              </button>
+              <button onclick="openViewModal('lychee-tree')" class="btn-secondary text-sm">
+                <i class="fas fa-eye mr-2"></i>View Details
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Marketplace Card 4 -->
+        <div class="marketplace-card">
+          <div class="price-tag">Tk 2200</div>
+          <img src="img/guvava tree.jpg" alt="Guava Tree">
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-gray-800 mb-2">Guava Tree</h3>
+            <p class="text-gray-600 mb-4">Organically grown guava tree, 2.5 years old. High vitamin C variety.</p>
+            <div class="seller-info mb-4">
+              <img src="" alt="Seller" class="seller-avatar">
+              <div>
+                <p class="font-medium text-gray-800">P</p>
+                <p class="text-sm text-gray-600">Khulna, Bangladesh</p>
+              </div>
+            </div>
+            <div class="flex justify-between">
+              <button onclick="openBuyModal('guava-tree')" class="btn-primary text-sm">
+                <i class="fas fa-shopping-cart mr-2"></i>Buy Now
+              </button>
+              <button onclick="openViewModal('guava-tree')" class="btn-secondary text-sm">
+                <i class="fas fa-eye mr-2"></i>View Details
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Marketplace Card 5 -->
+        <div class="marketplace-card">
+          <div class="badge badge-new">NEW</div>
+          <div class="price-tag">Tk 1800</div>
+          <img src="img/banana tree.jpg" alt="Banana Tree">
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-gray-800 mb-2">Banana Tree</h3>
+            <p class="text-gray-600 mb-4">Dwarf banana variety, perfect for home gardens. Will bear fruit in 8-10 months.</p>
+            <div class="seller-info mb-4">
+              <img src="" alt="Seller" class="seller-avatar">
+              <div>
+                <p class="font-medium text-gray-800">M</p>
+                <p class="text-sm text-gray-600">Barisal, Bangladesh</p>
+              </div>
+            </div>
+            <div class="flex justify-between">
+              <button onclick="openBuyModal('banana-tree')" class="btn-primary text-sm">
+                <i class="fas fa-shopping-cart mr-2"></i>Buy Now
+              </button>
+              <button onclick="openViewModal('banana-tree')" class="btn-secondary text-sm">
+                <i class="fas fa-eye mr-2"></i>View Details
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Marketplace Card 6 -->
+        <div class="marketplace-card">
+          <div class="price-tag">Tk 3500</div>
+          <img src="img/rose.jpg" alt="Rose Plant">
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-gray-800 mb-2">Rose Plant Collection</h3>
+            <p class="text-gray-600 mb-4">Set of 5 different colored rose plants. Perfect for garden decoration.</p>
+            <div class="seller-info mb-4">
+              <img src="" alt="Seller" class="seller-avatar">
+              <div>
+                <p class="font-medium text-gray-800">K</p>
+                <p class="text-sm text-gray-600">Chittagong, Bangladesh</p>
+              </div>
+            </div>
+            <div class="flex justify-between">
+              <button onclick="openBuyModal('rose-collection')" class="btn-primary text-sm">
+                <i class="fas fa-shopping-cart mr-2"></i>Buy Now
+              </button>
+              <button onclick="openViewModal('rose-collection')" class="btn-secondary text-sm">
+                <i class="fas fa-eye mr-2"></i>View Details
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Professional About Section -->
+  <section id="about" class="section bg-light-gray">
+    <div class="container mx-auto px-6">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+        <div>
+          <h2 class="section-title">About Trees17</h2>
+          <p class="text-gray-600 mb-4">
+            Trees17 is a Bangladeshi initiative dedicated to celebrating and preserving the country's magnificent trees. 
+            Our mission is to raise awareness about the importance of trees in our ecosystem and inspire action to protect them.
+          </p>
+          <p class="text-gray-600 mb-6">
+            Founded in 2017, we have documented over 5,000 unique trees from all districts of Bangladesh, 
+            highlighting their ecological, cultural, and historical significance.
+          </p>
+          <div class="flex items-center space-x-8">
+            <div class="text-center">
+              <div class="text-3xl font-bold text-primary-green">5000+</div>
+              <div class="text-gray-600">Trees Documented</div>
+            </div>
+            <div class="text-center">
+              <div class="text-3xl font-bold text-primary-green">64</div>
+              <div class="text-gray-600">Districts Covered</div>
+            </div>
+            <div class="text-center">
+              <div class="text-3xl font-bold text-primary-green">1M+</div>
+              <div class="text-gray-600">Community Members</div>
+            </div>
+          </div>
+        </div>
+        <div class="relative">
+          <img src="https://images.unsplash.com/photo-1448375240586-882707db888b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80" alt="Forest" class="rounded-2xl shadow-xl">
+          <div class="absolute -bottom-6 -right-6 bg-primary-green text-white p-6 rounded-xl shadow-lg">
+            <div class="text-3xl font-bold">17</div>
+            <div>Years of Conservation</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Professional Testimonials Section -->
+  <section class="section bg-white">
+    <div class="container mx-auto px-6">
+      <h2 class="section-title text-center">What Our Community Says</h2>
+      <p class="section-subtitle text-center">Hear from tree enthusiasts from all over Bangladesh</p>
+      
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
+        <!-- Testimonial 1 -->
+        <div class="testimonial-card">
+          <p class="testimonial-text">Trees17 has completely transformed my understanding of trees. The detailed information and beautiful photography make learning about nature a joy.</p>
+          <div class="testimonial-author">
+            <img src="" alt="Testimonial" class="testimonial-avatar">
+            <div>
+              <p class="font-bold">Redwan</p>
+              <p class="text-sm text-gray-600">Botanist, Dhaka</p>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Testimonial 2 -->
+        <div class="testimonial-card">
+          <p class="testimonial-text">I've purchased several trees through the marketplace, and each one has been healthy and exactly as described. The sellers are knowledgeable and helpful.</p>
+          <div class="testimonial-author">
+            <img src="" alt="Testimonial" class="testimonial-avatar">
+            <div>
+              <p class="font-bold">K</p>
+              <p class="text-sm text-gray-600">Gardener, Sylhet</p>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Testimonial 3 -->
+        <div class="testimonial-card">
+          <p class="testimonial-text">As a teacher, I use Trees17 resources regularly in my classroom. The children are fascinated by the tree profiles and conservation efforts.</p>
+          <div class="testimonial-author">
+            <img src="" alt="Testimonial" class="testimonial-avatar">
+            <div>
+              <p class="font-bold">P</p>
+              <p class="text-sm text-gray-600">Educator, Chittagong</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Professional CTA Section -->
+  <section id="plant" class="section bg-gradient-to-r from-primary-green to-dark-green text-white">
+    <div class="container mx-auto px-6 text-center">
+      <h2 class="text-4xl font-bold mb-4">Want to Plant a Tree?</h2>
+      <p class="mb-8 text-lg max-w-2xl mx-auto">Join our national movement. Every tree counts. 🌍💚</p>
+      
+      <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-8 max-w-2xl mx-auto mb-8">
+        <h3 class="text-2xl font-bold mb-4">Plant a Tree Today</h3>
+        <form class="space-y-4">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <input type="text" placeholder="Your Name" class="px-4 py-3 rounded-lg bg-white/90 text-gray-800 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-white">
+            <input type="email" placeholder="Your Email" class="px-4 py-3 rounded-lg bg-white/90 text-gray-800 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-white">
+          </div>
+          <select class="w-full px-4 py-3 rounded-lg bg-white/90 text-gray-800 focus:outline-none focus:ring-2 focus:ring-white">
+            <option>Select Tree Type</option>
+            <option>Fruit Tree</option>
+            <option>Flowering Tree</option>
+            <option>Shade Tree</option>
+            <option>Evergreen</option>
+          </select>
+          <button type="submit" class="w-full bg-white text-primary-green font-bold py-3 px-6 rounded-lg hover:bg-gray-100 transition-colors">
+            <i class="fas fa-seedling mr-2"></i>Plant My Tree
+          </button>
+        </form>
+      </div>
+      
+      <p class="text-green-200">Together, we've planted <span class="font-bold text-white">250,000+ trees</span> across Bangladesh!</p>
+    </div>
+  </section>
+
+  <!-- Professional Footer -->
+  <footer class="footer">
+    <div class="container mx-auto px-6">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+        <div>
+          <h3 class="footer-title">Trees17</h3>
+          <p class="mb-4">Celebrating Bangladesh's natural heritage, one tree at a time.</p>
+          <div class="flex space-x-3">
+            <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+        </div>
+        <div>
+          <h3 class="footer-title">Quick Links</h3>
+          <ul>
+            <li><a href="#home" class="footer-link">Home</a></li>
+            <li><a href="#trees" class="footer-link">Trees</a></li>
+            <li><a href="#marketplace" class="footer-link">Marketplace</a></li>
+            <li><a href="#about" class="footer-link">About</a></li>
+            <li><a href="#plant" class="footer-link">Plant a Tree</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="footer-title">Resources</h3>
+          <ul>
+            <li><a href="#" class="footer-link">Tree Database</a></li>
+            <li><a href="#" class="footer-link">Conservation Guide</a></li>
+            <li><a href="#" class="footer-link">Research Papers</a></li>
+            <li><a href="#" class="footer-link">Volunteer</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="footer-title">Newsletter</h3>
+          <p class="mb-4">Subscribe to get updates on trees and conservation efforts.</p>
+          <form class="newsletter-form">
+            <input type="email" placeholder="Your email" class="newsletter-input">
+            <button type="submit" class="newsletter-button">Subscribe</button>
+          </form>
+        </div>
+      </div>
+      <div class="border-t border-green-800 pt-6 text-center">
+        <p>© 2025 Trees17. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Professional Tree Details Modal -->
+  <div id="treeModal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 id="modalTitle" class="modal-title"></h3>
+        <button onclick="closeModal()" class="modal-close">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+          <img id="modalImage" src="" alt="" class="w-full h-64 object-cover rounded-lg">
+          <div>
+            <p id="modalLocation" class="text-gray-600 mb-2"></p>
+            <p id="modalDescription" class="text-gray-700 mb-4"></p>
+            <div class="space-y-2">
+              <div class="flex items-center">
+                <i class="fas fa-ruler-vertical text-primary-green w-6"></i>
+                <span id="modalHeight" class="text-gray-700"></span>
+              </div>
+              <div class="flex items-center">
+                <i class="fas fa-calendar-alt text-primary-green w-6"></i>
+                <span id="modalAge" class="text-gray-700"></span>
+              </div>
+              <div class="flex items-center">
+                <i class="fas fa-tag text-primary-green w-6"></i>
+                <span id="modalCategory" class="text-gray-700"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="bg-green-50 p-4 rounded-lg mb-6">
+          <h4 class="font-bold text-primary-green mb-2">Did You Know?</h4>
+          <p id="modalFact" class="text-green-700"></p>
+        </div>
+        <a href="#plant" onclick="closeModal()" class="btn-primary block text-center">
+          <i class="fas fa-seedling mr-2"></i>Plant a Tree Like This
+        </a>
+      </div>
     </div>
   </div>
-</div>
+
+  <!-- Professional Buy Modal -->
+  <div id="buyModal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title">Purchase Tree</h3>
+        <button onclick="closeBuyModal()" class="modal-close">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+          <img id="buyModalImage" src="" alt="" class="w-full h-64 object-cover rounded-lg">
+          <div>
+            <h4 id="buyModalTitle" class="text-xl font-bold text-gray-800 mb-2"></h4>
+            <p id="buyModalPrice" class="text-2xl font-bold text-primary-green mb-4"></p>
+            <p id="buyModalDescription" class="text-gray-700 mb-4"></p>
+            <div class="space-y-2 mb-4">
+              <div class="flex items-center">
+                <i class="fas fa-user text-primary-green w-6"></i>
+                <span id="buyModalSeller" class="text-gray-700"></span>
+              </div>
+              <div class="flex items-center">
+                <i class="fas fa-map-marker-alt text-primary-green w-6"></i>
+                <span id="buyModalLocation" class="text-gray-700"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="bg-gray-50 p-6 rounded-lg mb-6">
+          <h4 class="font-bold text-gray-800 mb-4">Shipping Information</h4>
+          <form class="space-y-4">
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label">Full Name</label>
+                <input type="text" class="form-input">
+              </div>
+              <div class="form-group">
+                <label class="form-label">Phone Number</label>
+                <input type="text" class="form-input">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Address</label>
+              <input type="text" class="form-input">
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label">City</label>
+                <input type="text" class="form-input">
+              </div>
+              <div class="form-group">
+                <label class="form-label">District</label>
+                <input type="text" class="form-input">
+              </div>
+              <div class="form-group">
+                <label class="form-label">Postal Code</label>
+                <input type="text" class="form-input">
+              </div>
+            </div>
+          </form>
+        </div>
+        
+        <div class="flex justify-between items-center">
+          <div class="text-lg">
+            <span class="text-gray-600">Total:</span>
+            <span id="buyModalTotal" class="font-bold text-primary-green ml-2"></span>
+          </div>
+          <div class="space-x-4">
+            <button onclick="closeBuyModal()" class="btn-cancel">Cancel</button>
+            <button onclick="processPurchase()" class="btn-submit">
+              <i class="fas fa-credit-card mr-2"></i>Complete Purchase
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Professional View Details Modal -->
+  <div id="viewModal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 id="viewModalTitle" class="modal-title"></h3>
+        <button onclick="closeViewModal()" class="modal-close">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+          <img id="viewModalImage" src="" alt="" class="w-full h-64 object-cover rounded-lg">
+          <div>
+            <p id="viewModalPrice" class="text-2xl font-bold text-primary-green mb-2"></p>
+            <p id="viewModalDescription" class="text-gray-700 mb-4"></p>
+            <div class="space-y-2">
+              <div class="flex items-center">
+                <i class="fas fa-user text-primary-green w-6"></i>
+                <span id="viewModalSeller" class="text-gray-700"></span>
+              </div>
+              <div class="flex items-center">
+                <i class="fas fa-map-marker-alt text-primary-green w-6"></i>
+                <span id="viewModalLocation" class="text-gray-700"></span>
+              </div>
+              <div class="flex items-center">
+                <i class="fas fa-ruler-vertical text-primary-green w-6"></i>
+                <span id="viewModalHeight" class="text-gray-700"></span>
+              </div>
+              <div class="flex items-center">
+                <i class="fas fa-calendar-alt text-primary-green w-6"></i>
+                <span id="viewModalAge" class="text-gray-700"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="bg-green-50 p-4 rounded-lg mb-6">
+          <h4 class="font-bold text-primary-green mb-2">Care Instructions</h4>
+          <p id="viewModalCare" class="text-green-700"></p>
+        </div>
+        
+        <div class="flex justify-between">
+          <button onclick="closeViewModal()" class="btn-cancel">Close</button>
+          <button onclick="closeViewModal(); openBuyModal(currentViewId);" class="btn-primary">
+            <i class="fas fa-shopping-cart mr-2"></i>Buy Now
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Professional Sell Modal -->
+  <div id="sellModal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title">Sell a Tree</h3>
+        <button onclick="closeSellModal()" class="modal-close">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form id="sellTreeForm" class="space-y-4">
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Tree Name</label>
+              <input type="text" id="sellTreeName" required class="form-input">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Price (Tk)</label>
+              <input type="number" id="sellTreePrice" required class="form-input">
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label class="form-label">Tree Type</label>
+            <select id="sellTreeType" required class="form-select">
+              <option value="">Select a type</option>
+              <option value="fruit">Fruit Tree</option>
+              <option value="flower">Flowering Tree</option>
+              <option value="native">Native Tree</option>
+              <option value="shade">Shade Tree</option>
+              <option value="evergreen">Evergreen</option>
+            </select>
+          </div>
+          
+          <div class="form-group">
+            <label class="form-label">Description</label>
+            <textarea id="sellTreeDescription" rows="4" required class="form-textarea"></textarea>
+          </div>
+          
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Tree Age</label>
+              <input type="text" id="sellTreeAge" required class="form-input">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Tree Height</label>
+              <input type="text" id="sellTreeHeight" required class="form-input">
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label class="form-label">Image URL</label>
+            <input type="url" id="sellTreeImage" required class="form-input">
+          </div>
+          
+          <div class="form-group">
+            <label class="form-label">Your Location</label>
+            <input type="text" id="sellTreeLocation" required class="form-input">
+          </div>
+          
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Your Name</label>
+              <input type="text" id="sellerName" required class="form-input">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Contact Email</label>
+              <input type="email" id="sellerEmail" required class="form-input">
+            </div>
+          </div>
+          
+          <div class="form-actions">
+            <button type="button" onclick="closeSellModal()" class="btn-cancel">Cancel</button>
+            <button type="submit" class="btn-submit">
+              <i class="fas fa-plus mr-2"></i>List Tree
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Smooth scrolling
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+
+    // Modal functionality
+    function openModal(treeType) {
+      const modal = document.getElementById('treeModal');
+      const title = document.getElementById('modalTitle');
+      const location = document.getElementById('modalLocation');
+      const description = document.getElementById('modalDescription');
+      const height = document.getElementById('modalHeight');
+      const age = document.getElementById('modalAge');
+      const category = document.getElementById('modalCategory');
+      const fact = document.getElementById('modalFact');
+      const image = document.getElementById('modalImage');
+      
+      const trees = {
+        jackfruit: { 
+          title: 'Jackfruit Tree', 
+          location: '📍 Sylhet, Bangladesh',
+          description: 'The jackfruit tree is well-suited to tropical lowlands and is widely cultivated throughout Bangladesh. It bears the largest fruit of all trees, reaching as much as 55 kg in weight, 90 cm in length, and 50 cm in diameter.',
+          height: 'Height: 20-30 meters',
+          age: 'Lifespan: 100+ years',
+          category: 'Category: Fruit Tree, Native',
+          fact: 'Jackfruit is the national fruit of Bangladesh and is known for its distinctive sweet taste and aroma. The wood of the jackfruit tree is sometimes used for furniture and musical instruments.',
+          image: 'img/jackfruit1.jpg'
+        },
+        lychee: { 
+          title: 'Lychee Tree', 
+          location: '📍 Rajshahi, Bangladesh',
+          description: 'The lychee is a tropical tree native to the Guangdong and Fujian provinces of southeastern China, where cultivation is documented from the 11th century. Bangladesh is one of the main producers of lychees in South Asia.',
+          height: 'Height: 10-15 meters',
+          age: 'Lifespan: 300-1000 years',
+          category: 'Category: Fruit Tree, Native',
+          fact: 'The lychee has a history of cultivation in China going back to 2000 BC. There are many stories of the fruit\'s use as a delicacy in the Chinese Imperial Court.',
+          image: 'img/lychee tree.jpg'
+        },
+        guava: { 
+          title: 'Guava Tree', 
+          location: '📍 Khulna, Bangladesh',
+          description: 'Guavas are common tropical fruits cultivated and enjoyed in many parts of Bangladesh. The trees are very hardy and can tolerate drought conditions and grow in various soil types.',
+          height: 'Height: 5-10 meters',
+          age: 'Lifespan: 30-40 years',
+          category: 'Category: Fruit Tree, Native',
+          fact: 'Guavas contain 4 times more vitamin C than oranges. They are also rich in antioxidants, vitamin A, and dietary fiber.',
+          image: 'img/guvava tree.jpg'
+        },
+        mango: { 
+          title: 'Mango Tree', 
+          location: '📍 Chapainawabganj, Bangladesh',
+          description: 'Mango trees grow to 35–40 m tall, with a crown radius of 10 m. The trees are long-lived, as some specimens still fruit after 300 years. Mango is the national fruit of India and Pakistan.',
+          height: 'Height: 35-40 meters',
+          age: 'Lifespan: 300+ years',
+          category: 'Category: Fruit Tree, Native',
+          fact: 'Mangoes are native to South Asia, from where the "common mango" has been distributed worldwide to become one of the most widely cultivated fruits in the tropics.',
+          image: 'img/mango tree.jpg'
+        },
+        banana: { 
+          title: 'Banana Tree', 
+          location: '📍 Barisal, Bangladesh',
+          description: 'Banana plants are often mistaken for trees, but they are actually giant herbaceous flowering plants. The banana is an edible fruit, botanically a berry, produced by several kinds of large herbaceous flowering plants in the genus Musa.',
+          height: 'Height: 6-7 meters',
+          age: 'Lifespan: 6-25 years',
+          category: 'Category: Fruit Tree, Native',
+          fact: 'Bananas are one of the most widely consumed fruits in the world. They contain potassium, vitamin B6, vitamin C, and fiber.',
+          image: 'img/banana tree.jpg'
+        },
+        rose: { 
+          title: 'Rose Plant', 
+          location: '📍 Dhaka, Bangladesh',
+          description: 'A rose is a woody perennial flowering plant of the genus Rosa, in the family Rosaceae. There are over three hundred species and tens of thousands of cultivars.',
+          height: 'Height: 0.5-7 meters',
+          age: 'Lifespan: 5-100+ years',
+          category: 'Category: Flowering Plant, Native',
+          fact: 'The rose is the national flower of England and the United States. Rose fossils date back 35 million years, making them one of the oldest flower species.',
+          image: 'img/rose.jpg'
+        }
+      };
+      
+      const tree = trees[treeType];
+      title.textContent = tree.title;
+      location.textContent = tree.location;
+      description.textContent = tree.description;
+      height.textContent = tree.height;
+      age.textContent = tree.age;
+      category.textContent = tree.category;
+      fact.textContent = tree.fact;
+      image.src = tree.image;
+      image.alt = tree.title;
+      modal.classList.add('active');
+    }
+
+    function closeModal() {
+      document.getElementById('treeModal').classList.remove('active');
+    }
+
+    // Marketplace modals
+    let currentBuyId = '';
+    let currentViewId = '';
+
+    const marketplaceTrees = {
+      'jackfruit-sapling': {
+        title: 'Jackfruit Sapling',
+        price: 'Tk 4500',
+        description: 'Healthy 2-year-old jackfruit sapling ready for planting. Grown organically in ideal conditions.',
+        seller: 'Redwan',
+        location: 'Dhaka, Bangladesh',
+        image: 'img/jackfruit1.jpg',
+        height: 'Height: 1.5 meters',
+        age: 'Age: 2 years',
+        care: 'Plant in well-drained soil with plenty of sunlight. Water regularly but avoid waterlogging. Fertilize every 3 months during growing season.'
+      },
+      'mango-tree': {
+        title: 'Mango Tree',
+        price: 'Tk 3200',
+        description: 'Premium variety mango tree, 3 years old. Will bear fruit next season. Disease resistant.',
+        seller: 'Karim',
+        location: 'Rajshahi, Bangladesh',
+        image: 'img/mango tree.jpg',
+        height: 'Height: 2 meters',
+        age: 'Age: 3 years',
+        care: 'Requires full sun and well-drained soil. Water deeply but infrequently. Prune in late winter to maintain shape.'
+      },
+      'lychee-tree': {
+        title: 'Lychee Tree',
+        price: 'Tk 2800',
+        description: 'Healthy lychee sapling, 2 years old. Sweet variety with high yield potential.',
+        seller: 'Liton',
+        location: 'Sylhet, Bangladesh',
+        image: 'img/lychee tree.jpg',
+        height: 'Height: 1.2 meters',
+        age: 'Age: 2 years',
+        care: 'Plant in acidic soil in a protected area. Protect from strong winds. Mulch to retain moisture.'
+      },
+      'guava-tree': {
+        title: 'Guava Tree',
+        price: 'Tk 2200',
+        description: 'Organically grown guava tree, 2.5 years old. High vitamin C variety.',
+        seller: 'Parvin',
+        location: 'Khulna, Bangladesh',
+        image: 'img/guvava tree.jpg',
+        height: 'Height: 1.8 meters',
+        age: 'Age: 2.5 years',
+        care: 'Thrives in full sun. Tolerates a wide range of soils. Water regularly during fruit development.'
+      },
+      'banana-tree': {
+        title: 'Banana Tree',
+        price: 'Tk 1800',
+        description: 'Dwarf banana variety, perfect for home gardens. Will bear fruit in 8-10 months.',
+        seller: 'Mahmud',
+        location: 'Barisal, Bangladesh',
+        image: 'img/banana tree.jpg',
+        height: 'Height: 1 meter',
+        age: 'Age: 1 year',
+        care: 'Needs rich, well-drained soil and plenty of water. Protect from strong winds. Remove dead leaves regularly.'
+      },
+      'rose-collection': {
+        title: 'Rose Plant Collection',
+        price: 'Tk 3500',
+        description: 'Set of 5 different colored rose plants. Perfect for garden decoration.',
+        seller: 'Kamal',
+        location: 'Chittagong, Bangladesh',
+        image: 'img/rose.jpg',
+        height: 'Height: 0.5 meters',
+        age: 'Age: 6 months',
+        care: 'Plant in well-drained soil with full sun. Water at the base to keep foliage dry. Prune in early spring.'
+      }
+    };
+
+    function openBuyModal(treeId) {
+      currentBuyId = treeId;
+      const modal = document.getElementById('buyModal');
+      const tree = marketplaceTrees[treeId];
+      
+      document.getElementById('buyModalTitle').textContent = tree.title;
+      document.getElementById('buyModalPrice').textContent = tree.price;
+      document.getElementById('buyModalDescription').textContent = tree.description;
+      document.getElementById('buyModalSeller').textContent = tree.seller;
+      document.getElementById('buyModalLocation').textContent = tree.location;
+      document.getElementById('buyModalImage').src = tree.image;
+      document.getElementById('buyModalImage').alt = tree.title;
+      document.getElementById('buyModalTotal').textContent = tree.price;
+      
+      modal.classList.add('active');
+    }
+
+    function closeBuyModal() {
+      document.getElementById('buyModal').classList.remove('active');
+    }
+
+    function openViewModal(treeId) {
+      currentViewId = treeId;
+      const modal = document.getElementById('viewModal');
+      const tree = marketplaceTrees[treeId];
+      
+      document.getElementById('viewModalTitle').textContent = tree.title;
+      document.getElementById('viewModalPrice').textContent = tree.price;
+      document.getElementById('viewModalDescription').textContent = tree.description;
+      document.getElementById('viewModalSeller').textContent = tree.seller;
+      document.getElementById('viewModalLocation').textContent = tree.location;
+      document.getElementById('viewModalHeight').textContent = tree.height;
+      document.getElementById('viewModalAge').textContent = tree.age;
+      document.getElementById('viewModalCare').textContent = tree.care;
+      document.getElementById('viewModalImage').src = tree.image;
+      document.getElementById('viewModalImage').alt = tree.title;
+      
+      modal.classList.add('active');
+    }
+
+    function closeViewModal() {
+      document.getElementById('viewModal').classList.remove('active');
+    }
+
+    function openSellModal() {
+      document.getElementById('sellModal').classList.add('active');
+    }
+
+    function closeSellModal() {
+      document.getElementById('sellModal').classList.remove('active');
+    }
+
+    function processPurchase() {
+      // In a real application, this would process the payment
+      alert('Thank you for your purchase! Your tree will be shipped within 3-5 business days.');
+      closeBuyModal();
+    }
+
+    // Handle sell tree form submission
+    document.getElementById('sellTreeForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      // In a real application, this would send the data to a server
+      alert('Thank you for listing your tree! It will be reviewed and added to the marketplace shortly.');
+      closeSellModal();
+      this.reset();
+    });
+
+    // Search functionality
+    const searchInput = document.getElementById('searchInput');
+    searchInput.addEventListener('input', function() {
+      const searchTerm = this.value.toLowerCase();
+      const treeCards = document.querySelectorAll('.tree-card');
+      
+      treeCards.forEach(card => {
+        const title = card.querySelector('h3').textContent.toLowerCase();
+        const description = card.querySelector('p').textContent.toLowerCase();
+        
+        if (title.includes(searchTerm) || description.includes(searchTerm)) {
+          card.style.display = 'block';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    });
+
+    // Filter functionality
+    const filterButtons = document.querySelectorAll('.filter-pill');
+    filterButtons.forEach(button => {
+      button.addEventListener('click', function() {
+        // Remove active class from all buttons
+        filterButtons.forEach(btn => btn.classList.remove('active'));
+        // Add active class to clicked button
+        this.classList.add('active');
+        
+        const filter = this.getAttribute('data-filter');
+        const treeCards = document.querySelectorAll('.tree-card');
+        
+        treeCards.forEach(card => {
+          if (filter === 'all' || card.getAttribute('data-category').includes(filter)) {
+            card.style.display = 'block';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    });
+
+    // Add animation on scroll
+    const observerOptions = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.1
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('animate-fadeInUp');
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.tree-card').forEach(card => {
+      observer.observe(card);
+    });
+
+    document.querySelectorAll('.marketplace-card').forEach(card => {
+      observer.observe(card);
+    });
+
+    document.querySelectorAll('.testimonial-card').forEach(card => {
+      observer.observe(card);
+    });
+  </script>
+</body>
+</html>
